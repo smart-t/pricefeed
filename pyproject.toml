@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pricefeed"
+version = "0.1.0"
+description = "A generic pricefeed generator with configurable deliveries and statistical info on prices generated."
+authors = [{name = "Toon Leijtens", email = "toon.leijtens@gmail.com"}]
+maintainers = [{name = "Toon Leijtens", email = "toon.leijtens@gmail.com"}]
+license = "MIT"
+readme = "README.md"
+keywords = ["pricefeed", "simulator", "stock", "statistics", "price", "simulation"]
+
