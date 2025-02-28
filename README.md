@@ -18,8 +18,8 @@ pip install pricefeed
 ### Install from Source (GitHub)
 
 ```bash
-git clone https://github.com/ebimsv/mlpredictor.git
-cd mlpredictor
+git clone https://github.com/smart-t/pricefeed.git
+cd pricefeed
 pip install .
 ```
 
@@ -28,7 +28,7 @@ pip install .
 ```bash
 import pricefeed as pf
 
-AAPL_ticker = pf.ticker("AAPL", 235.0, 500, 0.001)
+AAPL_ticker = pf.Pricefeed("AAPL", 235.0, 500, 0.001)
 for i in range(10):
   print(f"{i} : {next(AAPL_ticker)}")
 ```
