@@ -1,0 +1,10 @@
+LICENSE.txt
+README.md
+pyproject.toml
+pricefeed/__init__.py
+pricefeed/ticker.py
+pricefeed.egg-info/PKG-INFO
+pricefeed.egg-info/SOURCES.txt
+pricefeed.egg-info/dependency_links.txt
+pricefeed.egg-info/top_level.txt
+tests/test_ticker.py
