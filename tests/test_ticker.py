@@ -8,6 +8,17 @@ t_set = lambda: datetime.datetime.now().astimezone().replace(microsecond=0)
 t_diff = lambda t: str(t_set() - t)
 
 
+def test_constructor():
+    AAPL_ticker = Pricefeed("AAPL", 100)
+    assert AAPL_ticker.name == "AAPL"
+    assert AAPL_ticker.price == 100.0
+    assert AAPL_ticker.delay == 1000.0
+    assert AAPL_ticker.vol == 0.01
+    print(
+        f'\nPricefeed("AAPL", 100): name={AAPL_ticker.name}, price={AAPL_ticker.price}, delay={AAPL_ticker.delay}, vol={AAPL_ticker.vol} (correct defaults for delay and vol)'
+    )
+
+
 def test_feeddelay():
     AAPL_ticker = Pricefeed("Apple", 100, 1000, 0.01)
     t = t_set()
@@ -15,16 +26,18 @@ def test_feeddelay():
         _ = next(AAPL_ticker)
     timeOfTwoTicks = t_diff(t)
     assert timeOfTwoTicks == "0:00:02"
-    print(f"Yielding two prices took {timeOfTwoTicks} with one tick per second.")
+    print(f"\nYielding two prices took {timeOfTwoTicks} with one tick per second.")
 
 
 def test_firstprice():
     AAPL_ticker = Pricefeed("Apple", 100, 1000, 0.01)
-    _ = next(
+    startprice = next(
         AAPL_ticker
     )  # Ignore first tick as this is the price used in the constructor
     newprice = next(AAPL_ticker)
-    print(f"Newprice: {newprice}")
+    print(
+        f"\nNewprice: {newprice} within 1% from Startprice, which was at {startprice}"
+    )
     assert newprice <= 101 and newprice >= 99
 
 
