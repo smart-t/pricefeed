@@ -40,6 +40,9 @@ argument is used to indicate how volatile the stock movement will be.
 The generated prices are designed to stay relatively close to the given start
 price.
 
+The third and fourth properties (delay and vol) are optional, and if not
+provided they default to `1000ms` (`1sec`) and a volatility of `0.01`.
+
 ## Contributions
 
 This is an opensource project where you are invited to contribute and help

@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: pricefeed
-Version: 0.1.0
+Version: 0.1.1
 Summary: A generic pricefeed generator with configurable deliveries and statistical info on prices generated.
 Author-email: Toon Leijtens <toon.leijtens@gmail.com>
 Maintainer-email: Toon Leijtens <toon.leijtens@gmail.com>
