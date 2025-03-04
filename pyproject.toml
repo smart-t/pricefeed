@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pricefeed"
-version = "0.1.2"
+version = "0.1.3"
 description = "A generic pricefeed generator with configurable deliveries and statistical info on prices generated."
 authors = [{name = "Toon Leijtens", email = "toon.leijtens@gmail.com"}]
 maintainers = [{name = "Toon Leijtens", email = "toon.leijtens@gmail.com"}]

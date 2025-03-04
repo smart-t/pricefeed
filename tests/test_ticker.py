@@ -12,7 +12,7 @@ def test_constructor():
     AAPL_ticker = Pricefeed("AAPL", 100)
     assert AAPL_ticker.name == "AAPL"
     assert AAPL_ticker.price == 100.0
-    assert AAPL_ticker.delay == 1000.0
+    assert AAPL_ticker.delay == 0.0
     assert AAPL_ticker.vol == 0.01
     print(
         f'\nPricefeed("AAPL", 100): name={AAPL_ticker.name}, price={AAPL_ticker.price}, delay={AAPL_ticker.delay}, vol={AAPL_ticker.vol} (correct defaults for delay and vol)'
@@ -35,10 +35,60 @@ def test_firstprice():
         AAPL_ticker
     )  # Ignore first tick as this is the price used in the constructor
     newprice = next(AAPL_ticker)
+    assert newprice <= 101 and newprice >= 99
     print(
         f"\nNewprice: {newprice} within 1% from Startprice, which was at {startprice}"
     )
-    assert newprice <= 101 and newprice >= 99
+
+
+def test_avgprice():
+    AAPL_ticker = Pricefeed("Apple", 100, 0, 0.01)
+    sumPrice = 0.0
+    print(" ")
+    for i in range(4):
+        sumPrice += AAPL_ticker.price
+        print(f"{i}: {AAPL_ticker.price}")
+        next(AAPL_ticker)
+
+    avg = sumPrice / 4
+    assert AAPL_ticker.avgPrice == avg
+    print(
+        f"Calculated average price ={avg}, avg price from the feed ={AAPL_ticker.avgPrice}"
+    )
+
+
+def test_maxprice():
+    AAPL_ticker = Pricefeed("Apple", 100, 0, 0.01)
+    maxprice = 0.0
+    print(" ")
+    for i in range(4):
+        p = AAPL_ticker.price
+        if p >= maxprice:
+            maxprice = p
+        print(f"{i}: {AAPL_ticker.price}")
+        next(AAPL_ticker)
+
+    assert AAPL_ticker.maxPrice == maxprice
+    print(
+        f"Found max price ={maxprice}, max price from the feed ={AAPL_ticker.maxPrice}"
+    )
+
+
+def test_minprice():
+    AAPL_ticker = Pricefeed("Apple", 100, 0, 0.01)
+    minprice = 0.0
+    print(" ")
+    for i in range(4):
+        p = AAPL_ticker.price
+        if p <= minprice or minprice == 0:
+            minprice = p
+        print(f"{i}: {AAPL_ticker.price}")
+        next(AAPL_ticker)
+
+    assert AAPL_ticker.minPrice == minprice
+    print(
+        f"Found min price ={minprice}, min price from the feed ={AAPL_ticker.minPrice}"
+    )
 
 
 def test_getsetname():
