@@ -4,3 +4,4 @@ pricefeed.egg-info/
 *.pkl
 dist/
 build/
+.venv/

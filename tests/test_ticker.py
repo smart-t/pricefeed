@@ -4,8 +4,10 @@ import pytest
 
 from pricefeed import Pricefeed
 
-t_set = lambda: datetime.datetime.now().astimezone().replace(microsecond=0)
-t_diff = lambda t: str(t_set() - t)
+def t_set():
+    return datetime.datetime.now().astimezone().replace(microsecond=0)
+def t_diff(t):
+    return str(t_set() - t)
 
 
 def test_constructor():
